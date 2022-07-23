@@ -1,6 +1,6 @@
-
 const Psicologo = {
 nome,
-email
+email,
+aniversario
 }
 
