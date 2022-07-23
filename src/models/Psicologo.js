@@ -1,1 +1,6 @@
-const Psicologo = {};
+
+const Psicologo = {
+nome,
+email
+}
+
