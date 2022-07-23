@@ -1,0 +1,4 @@
+const Psicologo = {
+nome,
+email
+}
