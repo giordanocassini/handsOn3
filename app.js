@@ -12,6 +12,7 @@ const PORT = 3000;
   }
 })();
 db.hasConnection(); */
+//teste branch noronha
 
 app.use(express.json());
 app.use("/", require("./src/routes/root"));
