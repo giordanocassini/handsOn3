@@ -2,14 +2,14 @@ const Sequelize = require('sequelize');
 
 const DB_NAME = 'lavie';
 const DB_USER = 'root';
-const DB_PASS = '';
+const DB_PASS = 'root';
 const DB_CONFIG =  {
     dialect: 'mysql',
     host: 'localhost',
     port: 3306
 };
 
-//object to storage db connection 
+// //object to storage db connection 
 let db = {};
 
 try {
@@ -19,18 +19,17 @@ try {
     console.log(error);
 };
 
-async function hasConnection() {
+async function hasConection() {
     try {
         await db.authenticate();
-        console.log("database connected!");
+        console.log("Database connected!");
     } catch (error) {
         console.error("Error on database authentication");
-        console.log(error);
-    }
-}
+    };
+};
 
 Object.assign(db, {
-    hasConnection
-})
+    hasConection,
+});
 
 module.exports = db;

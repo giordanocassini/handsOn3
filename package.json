@@ -1,14 +1,14 @@
 {
     "scripts": {
-      "dev": "nodemon server"
+        "dev": "nodemon src/app.js",
+        "start": "node src/app.js"
     },
     "dependencies": {
-      "express": "^4.18.1",
-      "mysql2": "^2.3.3",
-      "sequelize": "^6.21.3"
+        "express": "^4.18.1",
+        "mysql2": "^2.3.3",
+        "sequelize": "^6.21.3"
     },
     "devDependencies": {
-      "nodemon": "^2.0.19"
+        "nodemon": "^2.0.19"
     }
-  }
-  
+}
