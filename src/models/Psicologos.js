@@ -8,37 +8,42 @@ const { DataTypes } = require("sequelize");
 
 // Creating object and from connection defining table model
 const Psicologos = db.define(
-    "Psicologo", 
-    {
+  "Psicologos",
+  {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    nome: {
-        type: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
     },
     email: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
-    senha: {
-       type: DataTypes.STRING,
+    password: {
+      type: DataTypes.STRING,
     },
-    apresentacao : {
-        type: DataTypes.STRING,
+    presentation: {
+      type: DataTypes.STRING,
     },
+    atedimento_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: Atendimentos,
+            key: 'id'
+        }
+      },
     createdAt: {
-        type: DataTypes.DATE,
+      type: DataTypes.DATE,
     },
     updateAt: {
-        type: DataTypes.DATE,
+      type: DataTypes.DATE,
     },
-}, 
-{
-    tableName: "psicologo",
-});
+  },
+  {
+    tableName: "psicologos",
+  }
+);
 
-// // Exporting structure
 module.exports = Psicologos;
-
-

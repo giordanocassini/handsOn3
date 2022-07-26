@@ -9,7 +9,7 @@ const DB_CONFIG =  {
     port: 3306
 };
 
-// //object to storage db connection 
+//object to storage db connection 
 let db = {};
 
 try {
