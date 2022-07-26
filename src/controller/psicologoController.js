@@ -1,9 +1,12 @@
 const { Psicologos } = require("../models");
+const Atendimentos = require("../models/Atendimentos");
 
 const psicologoController = {
 
   async getAllPiscologos(req, res) {
-    const picologosList = await Psicologos.findAll();
+    const picologosList = await Psicologos.findAll({
+      includes: Atendimentos
+    });
     res.json(picologosList);
   },
 
