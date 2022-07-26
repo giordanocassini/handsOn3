@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createValidation } = require("../validations/psicologos");
+const { createValidation, updateValidation, deleteValidation, readValidation } = require("../validations/psicologos");
 
 const psicologoController = require("../controller/psicologoController");
 
@@ -11,8 +11,8 @@ router
   .get(psicologoController.listarPsicologos);
 router
   .route("/:id")
-  .get(psicologoController.pegarPsicologo)
-  .put(psicologoController.atualizarPsicologo)
-  .delete(psicologoController.deletarPsicologo);
+  .get(readValidation, psicologoController.pegarPsicologo)
+  .put(updateValidation, psicologoController.atualizarPsicologo)
+  .delete(deleteValidation, psicologoController.deletarPsicologo);
 
 module.exports = router;
