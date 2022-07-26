@@ -1,13 +1,19 @@
-const Piscologos = require('./Psicologos');
+const Psicologos = require('./Psicologos');
 const Pacientes = require('./Pacientes');
 const Atendimentos = require('./Atendimentos');
 
-Piscologos.belongsToMany(Pacientes, {
+Psicologos.belongsToMany(Pacientes, {
     foreingKey: "piscologo_id",
     through: Atendimentos
 });
 
-Pacientes.belongsToMany(Piscologos, {
-    foreingKey: "piscologo_id",
+Pacientes.belongsToMany(Psicologos, {
+    foreingKey: "paciente_id",
     through: Atendimentos
 });
+
+module.exports = {
+    Psicologos,
+    Pacientes,
+    Atendimentos
+}

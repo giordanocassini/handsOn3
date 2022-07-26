@@ -1,12 +1,8 @@
 // importing connection with bd
 const db = require("../database");
-
-// importing sequelize types according to the bd and .js
 const { DataTypes } = require("sequelize");
+const Atendimentos = require("./Atendimentos");
 
-// const Atendimento = require("./Atendimento");
-
-// Creating object and from connection defining table model
 const Psicologos = db.define(
   "Psicologos",
   {
