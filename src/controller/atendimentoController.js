@@ -8,9 +8,7 @@ const atendimentoController = {
 
   async pegarAtendimento(req, res) {
     const { id } = req.params;
-    const listaDeAtendimentoId = await Atendimentos.findOne({
-      where: { id },
-    });
+    const listaDeAtendimentoId = await Atendimentos.findByPk(id);
     if (!listaDeAtendimentoId) {
       res.status(404).json("ID not found");
     } else {
@@ -19,7 +17,7 @@ const atendimentoController = {
   },
 
   async cadastrarAtendimento(req, res) {
-    const { data_atendimento, observacao, paciente_id, psicologo_id } =
+    const { data_atendimento, observacao, paciente_id, psicologo_id /* esse parametro apos implementado o login vira pelo JWT */} =
       req.body;
     const novoAtendimento = await Atendimentos.create({
       data_atendimento,
