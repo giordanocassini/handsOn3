@@ -1,14 +1,16 @@
-const { Psicologos } = require("../models");
+const { Psicologos, Atendimentos } = require("../models");
 
 const psicologoController = {
     listarPsicologos: async (req, res) =>{
-        const listaDePsicologos = await Psicologos.findAll()
+        const listaDePsicologos = await Psicologos.findAll({
+          include: Atendimentos,
+        });
         res.json(listaDePsicologos);
     },
     async listarPsicologoId (req, res){
         const {id} = req.params;
         const listaDePsicologoId = await Psicologos.findOne({
-            where: {id,}
+            where: id,
         });
         if(!listaDePsicologoId){
             res.status(404).json("ID not found");

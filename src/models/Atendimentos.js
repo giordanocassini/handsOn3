@@ -1,11 +1,10 @@
 const db = require("../database");
 const { DataTypes } = require("sequelize");
 
-const { Atendimentos } = require("../models")
 const Pacientes = require("./Pacientes");
 const Psicologos = require("./Psicologos");
 
-const Atendimento = db.define(
+const Atendimentos = db.define(
     "Atendimento", 
     {
     id: {
@@ -38,5 +37,5 @@ const Atendimento = db.define(
     tableName: "atendimento",
 });
 
-module.exports = Atendimento;
+module.exports = Atendimentos;
 

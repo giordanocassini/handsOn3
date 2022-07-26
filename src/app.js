@@ -7,6 +7,6 @@ db.hasConection();
 
 app.use(express.json());
 app.use(routes);
-app.listen(3000, ()=> console.log("Server running on port 3000!"));
+app.listen(3500, ()=> console.log("Server running on port 3500!"));
 
 (async()=>{await db.sync();})();
