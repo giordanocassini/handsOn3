@@ -15,4 +15,5 @@ Pacientes.belongsToMany(Psicologos, {
 module.exports = {
   Psicologos,
   Pacientes,
+  Atendimentos
 };

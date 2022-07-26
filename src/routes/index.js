@@ -1,5 +1,6 @@
 const express = require("express");
 const psicologoController = require("../controller/psicologoController");
+const atendimentoController = require("../controller/atendimentoController");
 const routes = express.Router();
 
 // const pacienteController = require("../controller/pacienteController");
@@ -23,9 +24,9 @@ routes.delete("/psicologos/:id", psicologoController.deletePsicologo);
 // routes.put("/pacientes/:id/atualizar", pacienteController.atualizarPaciente);
 // routes.delete("/pacientes/:id/deletar", pacienteController.deletarPaciente);
 
-// // creating routes and indicating methods - Pacientes
-// routes.post("/atendimentos/criar", atendimentoController.cadastrarAtendimento);
-// routes.get("/atendimentos/lista", atendimentoController.listarAtendimento);
-// routes.get("/atendimentos/:id/lista", atendimentoController.listarAtendimentoId);
+// creating routes and indicating methods - Pacientes
+routes.post("/atendimentos/criar", atendimentoController.cadastrarAtendimento);
+routes.get("/atendimentos/lista", atendimentoController.listarAtendimento);
+routes.get("/atendimentos/:id/lista", atendimentoController.listarAtendimentoId);
 
 module.exports = routes;
