@@ -19,15 +19,15 @@ routes.put("/psicologos/:id", psicologoController.updatePsicologo);
 routes.delete("/psicologos/:id", psicologoController.deletePsicologo);
 
 // creating routes and indicating methods - Pacientes
-routes.post("/pacientes/criar", pacienteController.cadastrarPaciente);
+routes.post("/pacientes", pacienteController.cadastrarPaciente);
 //routes.get("/pacientes/lista", pacienteController.listarPaciente);
-routes.get("/pacientes/:id/lista", pacienteController.listarPacienteId);
-routes.put("/pacientes/:id/atualizar", pacienteController.atualizarPaciente);
-routes.delete("/pacientes/:id/deletar", pacienteController.deletarPaciente);
+routes.get("/pacientes/:id", pacienteController.listarPacienteId);
+routes.put("/pacientes/:id", pacienteController.atualizarPaciente);
+routes.delete("/pacientes/:id", pacienteController.deletarPaciente);
 
 // creating routes and indicating methods - Pacientes
-routes.post("/atendimentos/criar", atendimentoController.cadastrarAtendimento);
+routes.post("/atendimentos", atendimentoController.cadastrarAtendimento);
 //routes.get("/atendimentos/lista", atendimentoController.listarAtendimento);
-routes.get("/atendimentos/:id/lista", atendimentoController.listarAtendimentoId);
+routes.get("/atendimentos/:id", atendimentoController.listarAtendimentoId);
 
 module.exports = routes;

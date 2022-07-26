@@ -18,12 +18,12 @@ const atendimentoController = {
     
     async cadastrarAtendimento(req, res){
         
-        const { data_atendimento, observacao, pacientes_id, psicologos_id } = req.body;
+        const { appointmentDate, note, PacienteId, PsicologoId } = req.body;
         const novoAtendimento = await Atendimentos.create({
-            data_atendimento,
-            observacao,
-            pacientes_id,
-            psicologos_id,
+            appointmentDate,
+            note,
+            PacienteId,
+            PsicologoId,
         });
 
         console.log(req.body);
