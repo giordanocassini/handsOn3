@@ -1,16 +1,22 @@
-// const Atendimento = require("./Atendimento");
-// const Paciente = require("./Paciente");
-// const Psicologo = require("./Psicologo");
+const Psicologos = require("./Psicologos");
+const Pacientes = require("./Pacientes");
+const Atendimentos = require("./Atendimentos");
 
-// Paciente.hasMany(Atendimento, );
+Psicologos.hasMany(Atendimentos,{
+    foreignKey: 'psicologos_id',
+});
+Pacientes.hasMany(Atendimentos,{
+    foreignKey: 'pacientes_id',
+});
+Atendimentos.belongsTo(Psicologos,{
+    foreignKey: 'psicologos_id',
+});
+Atendimentos.belongsTo(Pacientes,{
+    foreignKey: 'pacientes_id',
+});
 
-// Psicologo.hasMany(Atendimento,);
-
-// Atendimento.hasOne(Paciente,{
-//     foreignKey: "paciente_id",
-// })
-// Atendimento.hasOne(Psicologo,{
-//     foreignKey: "paciente_id",
-//     foreignKey: "fabricante_id",
-// })
-
+module.exports = {
+    Psicologos,
+    Pacientes,
+    Atendimentos,
+};

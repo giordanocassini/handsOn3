@@ -1,12 +1,6 @@
-// importing connection with bd
 const db = require("../database");
-
-// importing sequelize types according to the bd and .js
 const { DataTypes } = require("sequelize");
 
-// const Atendimento = require("./Atendimento");
-
-// Creating object and from connection defining table model
 const Psicologos = db.define(
     "Psicologo", 
     {
@@ -27,18 +21,11 @@ const Psicologos = db.define(
     apresentacao : {
         type: DataTypes.STRING,
     },
-    createdAt: {
-        type: DataTypes.DATE,
-    },
-    updateAt: {
-        type: DataTypes.DATE,
-    },
 }, 
 {
     tableName: "psicologo",
 });
 
-// // Exporting structure
 module.exports = Psicologos;
 
 

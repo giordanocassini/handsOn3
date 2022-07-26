@@ -15,7 +15,7 @@ let db = {};
 try {
     db = new Sequelize(DB_NAME, DB_USER, DB_PASS, DB_CONFIG);
 } catch (error) {
-    console.error("Error on attempting connection to database");
+    console.error("Error on attempting connection to database!");
     console.log(error);
 };
 
@@ -24,7 +24,7 @@ async function hasConection() {
         await db.authenticate();
         console.log("Database connected!");
     } catch (error) {
-        console.error("Error on database authentication");
+        console.error("Error on database authentication!");
     };
 };
 

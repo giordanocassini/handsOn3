@@ -1,30 +1,24 @@
-const Psicologos = require("../models/Psicologos");
+const { Psicologos } = require("../models");
 
 const psicologoController = {
-    listarPsicologo: async (req, res) =>{
-
+    listarPsicologos: async (req, res) =>{
         const listaDePsicologos = await Psicologos.findAll()
-
-        res.json(listaDePsicologos)
+        res.json(listaDePsicologos);
     },
-
-    listarPsicologoId: async (req, res) =>{
-
-        const listaDePsicologosId = await Psicologos.findOne({
-            where: { 
-                id,
-            },
-        }    
-        )
-
-        res.json(listaDePsicologosId)
+    async listarPsicologoId (req, res){
+        const {id} = req.params;
+        const listaDePsicologoId = await Psicologos.findOne({
+            where: {id,}
+        });
+        if(!listaDePsicologoId){
+            res.status(404).json("ID not found");
+        }
+        else { res.status(200).json(listaDePsicologoId);}
     },
-        
-
+    
     async cadastrarPsicologo(req, res){
+        
         const { nome, email, senha, apresentacao } = req.body;
-
-        // Cadastrando um novo produto através do metodo .create do sequelize conforme modelo pre definido 
         const novoPsicologo = await Psicologos.create({
             nome,
             email,
@@ -33,46 +27,33 @@ const psicologoController = {
         });
 
         console.log(req.body);
-        // Resposta mostrada apos metodo .create
+       
         res.json(novoPsicologo);
     },
 
     async deletarPsicologo(req, res) {
-
-        // desestruturarando o objeto usando o {id} do psicologo a ser deletado
         const {id} = req.params;
-
-        // Função assincrona, apartir modelo Psicologos, aplica-se o metodo .destroy
-        await Psicologos.destroy({
-        // Criamos a propiedade where que especifica onde, pelo ID, o metodo .destroy será aplicado.
-            where: { 
-                id,
-            },
+        
+        await Psicologos.destroy({        
+            where: { id,},
         });
 
-        res.json("Psicologo Deletado")
+        res.json("Successfully deleted!")
     },
 
-    async atualizarPsicologo (req, res) {
-        const {id} = req.params;
-        const {nome, email, senha, apresentacao} = req.body;
-
-        const psicologoAtualizado = await Psicologos.update({
+    async atualizarPsicologo (req, res){
+        const { id } = req.params;
+        const { nome, email, senha, apresentacao  } = req.body;
+        // const newSenha = bcrypt.hashSync(senha, 10);
+        const psicologoAtualizado = await Psicologos.findOne({where: {id}});
+        psicologoAtualizado.update({ 
             nome,
             email,
             senha,
-            apresentacao,
-        },
-        {
-            where: {
-                id,
-            },
-        }
-        );
-        res.json("Psicologo Atualizado");        
+            apresentacao, 
+        });
+        res.status(200).json(psicologoAtualizado);
     },
-
-    
+      
 };
-
 module.exports = psicologoController;
