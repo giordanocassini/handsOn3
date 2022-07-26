@@ -10,11 +10,11 @@ const routes = express.Router();
 // routes.post("/login", )
 
 // // creating routes and indicating methods - Psicologos
-routes.post("/psicologos/criar", psicologoController.cadastrarPsicologo);
-routes.get("/psicologos/listar", psicologoController.listarPsicologo);
-routes.get("/psicologos/:id/lista", psicologoController.listarPsicologoId);
-routes.put("/psicologos/:id/atualizar", psicologoController.atualizarPsicologo);
-routes.delete("/psicologos/:id/deletar", psicologoController.deletarPsicologo);
+routes.post("/psicologos", psicologoController.createPsicologo);
+routes.get("/psicologos", psicologoController.getAllPiscologos);
+routes.get("/psicologos/:id", psicologoController.getPiscologo);
+routes.put("/psicologos/:id", psicologoController.updatePsicologo);
+routes.delete("/psicologos/:id", psicologoController.deletePsicologo);
 
 // // creating routes and indicating methods - Pacientes
 // routes.post("/pacientes/criar", pacienteController.cadastrarPaciente);

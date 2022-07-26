@@ -1,4 +1,3 @@
-// importing connection with bd
 const db = require("../database");
 const { DataTypes } = require("sequelize");
 const Atendimentos = require("./Atendimentos");
@@ -24,12 +23,12 @@ const Psicologos = db.define(
       type: DataTypes.STRING,
     },
     atendimento_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: Atendimentos,
-            key: 'id'
-        }
+      type: DataTypes.INTEGER,
+      references: {
+        model: Atendimentos,
+        key: "id",
       },
+    },
     createdAt: {
       type: DataTypes.DATE,
     },

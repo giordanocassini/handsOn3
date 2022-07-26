@@ -34,7 +34,7 @@ const psicologoController = {
     res.json(newPsicologo);
   },
 
-  async deletarPsicologo(req, res) {
+  async deletePsicologo(req, res) {
     const { id } = req.params;
     await Psicologos.destroy({
       where: {
@@ -45,7 +45,7 @@ const psicologoController = {
     res.json("Psicologo Deletado");
   },
 
-  async atualizarPsicologo(req, res) {
+  async updatePsicologo(req, res) {
     const { id } = req.params;
     const { name, email, password, presentation } = req.body;
 

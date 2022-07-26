@@ -18,20 +18,20 @@ const Atendimentos = db.define(
     note: {
       type: DataTypes.STRING,
     },
-    paciente_id: {
+    /* paciente_id: {
       type: DataTypes.INTEGER,
       references: {
         model: Pacientes,
-        key: "id",
-      },
+        key: "id"
+      }
     },
-    piscologo_id: {
+    psicologo_id: {
       type: DataTypes.INTEGER,
       references: {
         model: Psicologos,
-        key: "id",
-      },
-    },
+        key: "id"
+      }
+    }, */
     createdAt: {
       type: DataTypes.DATE,
     },
@@ -44,5 +44,4 @@ const Atendimentos = db.define(
   }
 );
 
-// Exportando a extrutura
 module.exports = Atendimentos;
