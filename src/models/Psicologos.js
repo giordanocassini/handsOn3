@@ -2,7 +2,7 @@ const db = require("../database");
 const { DataTypes } = require("sequelize");
 
 const Psicologos = db.define(
-    "Psicologo", 
+    "Psicologos", 
     {
     id: {
         type: DataTypes.INTEGER,
@@ -23,7 +23,7 @@ const Psicologos = db.define(
     },
 }, 
 {
-    tableName: "psicologo",
+    tableName: "psicologos",
 });
 
 module.exports = Psicologos;

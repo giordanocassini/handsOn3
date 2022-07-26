@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const DB_NAME = 'lavie2';
+const DB_NAME = 'lavie3';
 const DB_USER = 'root';
 const DB_PASS = 'sql123';
 const DB_CONFIG =  {

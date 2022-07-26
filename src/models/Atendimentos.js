@@ -5,7 +5,7 @@ const Pacientes = require("./Pacientes");
 const Psicologos = require("./Psicologos");
 
 const Atendimentos = db.define(
-    "Atendimento", 
+    "Atendimentos", 
     {
     id: {
         type: DataTypes.INTEGER,
@@ -18,14 +18,14 @@ const Atendimentos = db.define(
     observacao: {
        type: DataTypes.STRING,
     },
-    pacientes_id:{
+    paciente_id:{
         type: DataTypes.INTEGER,
         references:{
             model: Pacientes,
             key: "id",
         }
     },
-    psicologos_id:{
+    psicologo_id:{
         type: DataTypes.INTEGER,
         references:{
             model: Psicologos,
@@ -34,7 +34,7 @@ const Atendimentos = db.define(
     },
 }, 
 {
-    tableName: "atendimento",
+    tableName: "atendimentos",
 });
 
 module.exports = Atendimentos;

@@ -3,16 +3,16 @@ const Pacientes = require("./Pacientes");
 const Atendimentos = require("./Atendimentos");
 
 Psicologos.hasMany(Atendimentos,{
-    foreignKey: 'psicologos_id',
+    foreignKey: 'psicologo_id',
 });
 Pacientes.hasMany(Atendimentos,{
-    foreignKey: 'pacientes_id',
+    foreignKey: 'paciente_id',
 });
 Atendimentos.belongsTo(Psicologos,{
-    foreignKey: 'psicologos_id',
+    foreignKey: 'psicologo_id',
 });
 Atendimentos.belongsTo(Pacientes,{
-    foreignKey: 'pacientes_id',
+    foreignKey: 'paciente_id',
 });
 
 module.exports = {

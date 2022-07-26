@@ -20,7 +20,7 @@ const Pacientes = db.define(
     },
 }, 
 {   
-    tableName: "paciente",
+    tableName: "pacientes",
 });
 
 module.exports = Pacientes;
