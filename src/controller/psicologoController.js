@@ -29,9 +29,7 @@ const psicologoController = {
       senha: hashSenha,
       apresentacao,
     });
-
-    console.log(req.body);
-
+    
     res.json(novoPsicologo);
   },
 
