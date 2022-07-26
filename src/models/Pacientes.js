@@ -20,7 +20,7 @@ const Pacientes = db.define(
     age: {
        type: DataTypes.DATE,
     },
-    atedimento_id: {
+    atendimento_id: {
         type: DataTypes.INTEGER,
         references: {
             model: Atendimentos,
@@ -38,6 +38,6 @@ const Pacientes = db.define(
     tableName: "pacientes",
 });
 
-// Exportando a extrutura 
-module.exports = Paciente;
+
+module.exports = Pacientes;
 
