@@ -10,13 +10,11 @@ const pacienteController = {
 
   async pegarPaciente(req, res) {
     const { id } = req.params;
-    const listaDePacienteId = await Pacientes.findOne({
-      where: { id },
-    });
-    if (!listaDePacienteId) {
+    const paciente = await Pacientes.findByPk(id);
+    if (!paciente) {
       res.status(404).json("ID not found");
     } else {
-      res.status(200).json(listaDePacienteId);
+      res.status(200).json(paciente);
     }
   },
 
