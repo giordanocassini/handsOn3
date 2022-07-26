@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const { createValidation } = require("../validations/psicologos");
 
 const psicologoController = require("../controller/psicologoController");
 
 // // creating routes and indicating methods - Psicologos
 router
   .route("/")
-  .post(psicologoController.cadastrarPsicologo)
+  .post(createValidation, psicologoController.cadastrarPsicologo)
   .get(psicologoController.listarPsicologos);
 router
   .route("/:id")
@@ -14,4 +15,4 @@ router
   .put(psicologoController.atualizarPsicologo)
   .delete(psicologoController.deletarPsicologo);
 
-  module.exports = router;
+module.exports = router;
