@@ -21,8 +21,8 @@ const atendimentoController = {
       data_atendimento,
       observacao,
       paciente_id,
-      psicologo_id /* esse parametro apos implementado o login vira pelo JWT */,
     } = req.body;
+   const psicologo_id = req.auth.id;
     try {
       const paciente = await Pacientes.findByPk(paciente_id);
       if (!paciente) throw new Error("Paciente não encontrado.");

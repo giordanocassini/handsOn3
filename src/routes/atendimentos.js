@@ -11,9 +11,8 @@ const {
 router
   .route("/")
   .get(auth, atendimentoController.listarAtendimentos)
-  .post(createValidation, atendimentoController.cadastrarAtendimento)
-  .get(deleteOrReadValidation, atendimentoController.listarAtendimentos);
+  .post(createValidation, auth, atendimentoController.cadastrarAtendimento);
 
-router.route("/:id").get(deleteOrReadValidation, atendimentoController.pegarAtendimento);
+router.route("/:id").get(deleteOrReadValidation, auth, atendimentoController.pegarAtendimento);
 
 module.exports = router;

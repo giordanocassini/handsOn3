@@ -7,16 +7,16 @@ const {
   updateValidation,
   deleteOrReadValidation,
 } = require("../validations/pacientes");
+const auth = require("../middlewares/auth");
 
-// // creating routes and indicating methods - pacientes
 router
   .route("/")
-  .post(createValidation, pacienteController.cadastrarPaciente)
-  .get(pacienteController.listarPacientes);
+  .post(createValidation, auth, pacienteController.cadastrarPaciente)
+  .get(auth, pacienteController.listarPacientes);
 router
   .route("/:id")
-  .get(deleteOrReadValidation, pacienteController.pegarPaciente)
-  .put(updateValidation, pacienteController.atualizarPaciente)
-  .delete(deleteOrReadValidation, pacienteController.deletarPaciente);
+  .get(deleteOrReadValidation, auth, pacienteController.pegarPaciente)
+  .put(updateValidation, auth, pacienteController.atualizarPaciente)
+  .delete(deleteOrReadValidation, auth, pacienteController.deletarPaciente);
 
 module.exports = router;

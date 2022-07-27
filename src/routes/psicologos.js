@@ -7,16 +7,17 @@ const {
 } = require("../validations/psicologos");
 
 const psicologoController = require("../controller/psicologoController");
+const auth = require('../middlewares/auth');
 
 // // creating routes and indicating methods - Psicologos
 router
   .route("/")
   .post(createValidation, psicologoController.cadastrarPsicologo)
-  .get(psicologoController.listarPsicologos);
+  .get(auth, psicologoController.listarPsicologos);
 router
   .route("/:id")
-  .get(deleteOrReadValidation, psicologoController.pegarPsicologo)
-  .put(updateValidation, psicologoController.atualizarPsicologo)
-  .delete(deleteOrReadValidation, psicologoController.deletarPsicologo);
+  .get(deleteOrReadValidation, auth, psicologoController.pegarPsicologo)
+  .put(updateValidation, auth, psicologoController.atualizarPsicologo)
+  .delete(deleteOrReadValidation, auth, psicologoController.deletarPsicologo);
 
 module.exports = router;
