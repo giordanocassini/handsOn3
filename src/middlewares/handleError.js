@@ -6,5 +6,5 @@ module.exports = (error, req, res, next) => {
     res.status(error.statusCode).json(error);
   if (error instanceof UnauthorizedError)
     res.status(error.status).json(error);
-  return res.status(401).json(error);
+  return res.status(500).json(error);
 };

@@ -11,11 +11,12 @@ const psicologoController = {
 
   async pegarPsicologo(req, res) {
     const { id } = req.params;
-    const psicologo = await Psicologos.findByPk(id);
-    if (!psicologo) {
-      res.status(404).json("ID do psicologo não encontrado");
-    } else {
-      res.status(200).json(psicologo);
+    try {
+      const psicologo = await Psicologos.findByPk(id);
+      if (!psicologo) throw new Error("Psicologo não encontrado");
+      return res.status(200).json(psicologo);
+    } catch (error) {
+      return res.status(404).json(error.message);
     }
   },
 
@@ -36,7 +37,7 @@ const psicologoController = {
         apresentacao,
       });
 
-      res.json(novoPsicologo);
+      return res.json(novoPsicologo);
     } catch (error) {
       return res.status(401).json(error.message);
     }
