@@ -10,11 +10,12 @@ const pacienteController = {
 
   async pegarPaciente(req, res) {
     const { id } = req.params;
-    const paciente = await Pacientes.findByPk(id);
-    if (!paciente) {
-      res.status(404).json("ID not found");
-    } else {
-      res.status(200).json(paciente);
+    try {
+      const paciente = await Pacientes.findByPk(id);
+      if (!paciente) throw new Error("Paciente não encontrado.");
+      res.status(200).json(paciente); 
+    } catch (error) {
+      return res.status(404).json(error.message);
     }
   },
 
@@ -26,31 +27,38 @@ const pacienteController = {
       idade,
     });
 
-    console.log(req.body);
-
     res.json(novoPaciente);
   },
 
   async deletarPaciente(req, res) {
     const { id } = req.params;
-
-    await Pacientes.destroy({
-      where: { id },
-    });
-
-    res.json("Deletado com sucesso!");
+    try {
+      const paciente = await Pacientes.findByPk(id);
+      if (!paciente) throw new Error("Paciente não encontrado.");
+      await Pacientes.destroy({
+        where: { id },
+      });
+      res.json("Deletado com sucesso!"); 
+    } catch (error) {
+      return res.status(404).json(error.message);
+    }
   },
 
   async atualizarPaciente(req, res) {
     const { id } = req.params;
     const { nome, email, idade } = req.body;
-    const pacienteAtualizado = await Pacientes.findOne({ where: { id } });
-    pacienteAtualizado.update({
-      nome,
-      email,
-      idade,
-    });
-    res.status(200).json(pacienteAtualizado);
+    try {
+      const paciente = await Pacientes.findByPk(id);
+      if (!paciente) throw new Error("Paciente não encontrado.");
+      paciente.update({
+        nome,
+        email,
+        idade,
+      });
+      return res.status(200).json(paciente); 
+    } catch (error) {
+      return res.status(404).json(error.message);
+    }
   },
 };
 

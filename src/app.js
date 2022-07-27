@@ -12,7 +12,7 @@ app.use("/", require("./routes/root"));
 app.use("/psicologos", require("./routes/psicologos"));
 app.use("/pacientes", require("./routes/pacientes"));
 app.use("/atendimentos", require("./routes/atendimentos"));
-//app.use('/login',require('./routes/login'));
+app.use('/login',require('./routes/login'));
 
 // validação
 

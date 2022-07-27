@@ -1,4 +1,6 @@
 const { Psicologos } = require("../models");
+const JWT = require("jsonwebtoken");
+const secret = require("../configs/secret");
 const bcrypt = require("bcryptjs");
 
 const loginController = {
@@ -12,7 +14,15 @@ const loginController = {
       });
       if (!psicologo || !bcrypt.compareSync(senha, psicologo.senha))
         throw new Error("Email ou senha inválidos");
-      return res.status(200).json("Usuário logado");
+      const token = JWT.sign(
+        {
+          id: psicologo.id,
+          email: psicologo.email,
+          nome: psicologo.nome,
+        },
+        secret.key
+      );
+      return res.status(200).json(token);
     } catch (error) {
       return res.status(401).json(error.message);
     }

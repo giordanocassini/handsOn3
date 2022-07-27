@@ -3,15 +3,17 @@ const { Atendimentos, Pacientes } = require("../models");
 const atendimentoController = {
   async listarAtendimentos(req, res) {
     const listaDeAtendimentos = await Atendimentos.findAll();
-    res.json(listaDeAtendimentos);
+    return res.status(200).json(listaDeAtendimentos);
   },
 
   async pegarAtendimento(req, res) {
     const { id } = req.params;
-    const listaDeAtendimentoId = await Atendimentos.findByPk(id);
-    if (!listaDeAtendimentoId)
-      res.status(404).json("Atendimento não encontrando");
+    try {const listaDeAtendimentoId = await Atendimentos.findByPk(id);
+    if (!listaDeAtendimentoId) throw new Error ("Atendimento não encontrando");
     return res.status(200).json(listaDeAtendimentoId);
+  } catch(error) {
+    return res.status(404).json(error.message);
+  }
   },
 
   async cadastrarAtendimento(req, res) {

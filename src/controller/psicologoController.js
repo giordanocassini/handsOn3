@@ -50,9 +50,9 @@ const psicologoController = {
       await Psicologos.destroy({
         where: { id },
       });
-      res.status(204).json("Psicologo deletado com sucesso!");
+      return res.status(204).json("Psicologo deletado com sucesso!");
     } catch (error) {
-      res.status(400).json(error.message);
+      return res.status(404).json(error.message);
     }
   },
 
@@ -68,9 +68,9 @@ const psicologoController = {
         senha,
         apresentacao,
       });
-      res.status(200).json(psicologoAtualizado);
+      return res.status(200).json(psicologoAtualizado);
     } catch (error) {
-      res.status(400).json(error.message);
+      return res.status(404).json(error.message);
     }
   },
 };
