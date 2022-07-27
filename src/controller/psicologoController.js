@@ -21,15 +21,25 @@ const psicologoController = {
 
   async cadastrarPsicologo(req, res) {
     const { nome, email, senha, apresentacao } = req.body;
-    const hashSenha = bcrypt.hashSync(senha, 10);
-    const novoPsicologo = await Psicologos.create({
-      nome,
-      email,
-      senha: hashSenha,
-      apresentacao,
-    });
+    try {
+      const psicologo = await Psicologos.findOne({
+        where: {
+          email,
+        },
+      });
+      if (psicologo) throw new Error("Email já cadastrado");
+      const hashSenha = bcrypt.hashSync(senha, 10);
+      const novoPsicologo = await Psicologos.create({
+        nome,
+        email,
+        senha: hashSenha,
+        apresentacao,
+      });
 
-    res.json(novoPsicologo);
+      res.json(novoPsicologo);
+    } catch (error) {
+      return res.status(401).json(error.message);
+    }
   },
 
   async deletarPsicologo(req, res) {
@@ -41,7 +51,7 @@ const psicologoController = {
         where: { id },
       });
       res.status(204).json("Psicologo deletado com sucesso!");
-    }catch (error) {
+    } catch (error) {
       res.status(400).json(error.message);
     }
   },

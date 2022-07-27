@@ -3,9 +3,7 @@ const router = express.Router();
 
 const loginController = require("../controller/loginController");
 
-const {
-  loginValidation,
-} = require("../validations/login");
+const loginValidation = require("../validations/login");
 
 router
   .route("/")
