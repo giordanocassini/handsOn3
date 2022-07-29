@@ -22,7 +22,7 @@ const atendimentoController = {
       observacao,
       paciente_id,
     } = req.body;
-   const psicologo_id = req.auth.id;
+   const psicologo_id = req.auth.id;  
     try {
       const paciente = await Pacientes.findByPk(paciente_id);
       if (!paciente) throw new Error("Paciente não encontrado.");
