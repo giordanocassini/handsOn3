@@ -8,7 +8,7 @@
 <a href= "#-Project">Project</a> &#160; |&#160;
 <a href= "#-Client">Client</a>  &#160; |&#160;
 <a href= "#-Authors">Authors</a>  &#160; |&#160;
-<a href= "#-Features Created">Databse</a>  &#160; |&#160;
+<a href= "#-Features Created">Features Created</a>  &#160; |&#160;
 <a href= "#-Technology and Dependency used">Technology and Dependency used</a> &#160; |&#160;
 <a href= "#-How to use">How to use</a> &#160; |&#160;
 <a href= "#-Optional Features ">Optional Features </a> &#160; |&#160;
