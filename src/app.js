@@ -14,6 +14,10 @@ app.use("/pacientes", require("./routes/pacientes"));
 app.use("/atendimentos", require("./routes/atendimentos"));
 app.use('/login',require('./routes/login'));
 
+app.use('/dashboard/psicologos',require('./routes/dashboard'));
+app.use('/dashboard/pacientes',require('./routes/dashboard'));
+app.use('/dashboard/atendimentos',require('./routes/dashboard'));
+
 // validação
 
 app.use(handleError);
